@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import ICon from "../assets/ICon.avif";
 import Search from "../assets/SVGs/Search";
 import {Save} from "../assets/SVGs/Save";
@@ -7,10 +7,11 @@ import CartSVG from "../assets/SVGs/CartSVG";
 import MenuSVG from "../assets/SVGs/MenuSVG";
 
 function Navbar() {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed left-0 right-0 bg-white  z-20 shadow-md">
+    <nav className="fixed top-0 left-0 right-0 bg-white z-20">
       <div className="flex justify-between items-center px-4 sm:px-[6%] md:px-[10%] py-3">
         <section className="flex items-center">
           <Link to="/profile">
@@ -47,10 +48,16 @@ function Navbar() {
             Explore
           </Link>
           <ul className="flex items-center text-2xl space-x-3">
-            <li className="bg-gray-200 p-2 rounded-full hover:bg-yellow-800 hover:text-white cursor-pointer transition shadow-sm">
+            <li
+              onClick={() => navigate("/wishlist")}
+              className="bg-gray-200 p-2 rounded-full hover:bg-yellow-800 hover:text-white cursor-pointer transition shadow-sm"
+            >
               <Save />
             </li>
-            <li className="bg-yellow-500 text-white p-2 rounded-full hover:bg-yellow-800 cursor-pointer transition shadow-sm">
+            <li
+              onClick={() => navigate("/cart")}
+              className="bg-yellow-500 text-white p-2 rounded-full hover:bg-yellow-800 cursor-pointer transition shadow-sm"
+            >
               <CartSVG />
             </li>
           </ul>

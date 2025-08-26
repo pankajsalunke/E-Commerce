@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom";
 import BannerImage from "../assets/bannerImg.png";
 
 const HeroSection = () => {
@@ -13,9 +14,12 @@ const HeroSection = () => {
         </p>
 
         <div className="flex justify-center md:justify-start gap-4">
-          <button className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition duration-300 shadow-md">
+          <Link
+            to={"/products"}
+            className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition duration-300 shadow-md"
+          >
             Start Shopping
-          </button>
+          </Link>
           <button className="border border-black px-4 py-2 rounded-lg hover:bg-gray-100 transition duration-300">
             Explore More
           </button>

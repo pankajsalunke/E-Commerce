@@ -7,7 +7,6 @@ function ProductCard({product}) {
       to={`/product/${product.id}`}
       className="flex flex-col p-4 rounded-xl bg-gray-200 shadow-md hover:shadow-lg transition cursor-pointer gap-3"
     >
-      {/* Top Row: Title + Price + Button */}
       <div className="flex justify-between items-start w-full">
         <h1 className="text-base sm:text-lg font-semibold text-gray-800">
           {product.title}
@@ -30,7 +29,6 @@ function ProductCard({product}) {
         </div>
       </div>
 
-      {/* Product Image */}
       <div className="flex justify-center items-center w-full h-28 sm:h-32">
         <img
           src={product.image}
