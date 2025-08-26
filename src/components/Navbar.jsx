@@ -9,12 +9,18 @@ import MenuSVG from "../assets/SVGs/MenuSVG";
 function Navbar() {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+  const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
+    navigate("/login");
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white z-20">
       <div className="flex justify-between items-center px-4 sm:px-[6%] md:px-[10%] py-3">
         <section className="flex items-center">
-          <Link to="/profile">
+          <Link to="">
             <img
               src={ICon}
               className="rounded-full border-2 bg-yellow-300 hover:bg-yellow-500 cursor-pointer me-3"
@@ -60,6 +66,21 @@ function Navbar() {
             >
               <CartSVG />
             </li>
+            {isLoggedIn ? (
+              <button
+                onClick={handleLogout}
+                className="ml-4 bg-red-500 text-white px-4 py-2 rounded-xl text-sm font-semibold"
+              >
+                Logout
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                className="ml-1 bg-blue-500 text-white px-4 py-2 rounded-xl text-sm font-semibold"
+              >
+                Login
+              </Link>
+            )}
           </ul>
         </section>
 
@@ -72,7 +93,7 @@ function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-[--theme-color] px-4 pb-4 space-y-4">
+        <div className="md:hidden py-20 px-4 pb-4 space-y-4">
           <form className="flex items-center bg-black/10 px-3 rounded-full text-sm w-full">
             <input
               type="text"

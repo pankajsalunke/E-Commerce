@@ -1,5 +1,4 @@
 import {useState} from "react";
-
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -7,30 +6,34 @@ import Home from "./pages/Home";
 import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
-
 import {Routes, Route} from "react-router-dom";
 import Products from "./pages/Products";
+import Login from "./pages/Login";
 
 function App() {
   return (
-    <div className="px-[4%] md:px-[10%] pb-2">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <main className="flex-grow">
+
+      <main className="flex-grow px-[4%] md:px-[10%] pb-2">
         <Routes>
           <Route
             path="/"
             element={<Home />}
           />
+
+          <Route
+            path="/login"
+            element={<Login />}
+          />
           <Route
             path="/products"
             element={<Products />}
           />
-
           <Route
             path="/product/:id"
             element={<ProductDetail />}
           />
-
           <Route
             path="/cart"
             element={<Cart />}
@@ -39,12 +42,9 @@ function App() {
             path="/wishlist"
             element={<Wishlist />}
           />
-          <Route
-            path="/cart"
-            element={<Cart />}
-          />
         </Routes>
       </main>
+
       <Footer />
     </div>
   );

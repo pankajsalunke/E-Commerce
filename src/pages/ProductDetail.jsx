@@ -1,9 +1,12 @@
-import {useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 import {trendingProducts} from "../data/products";
+import { useEffect } from "react";
 
 function ProductDetail() {
+  const navigate = useNavigate();
   const {id} = useParams();
   const product = trendingProducts.find((p) => p.id === parseInt(id));
+  
 
   if (!product) {
     return (
@@ -11,6 +14,29 @@ function ProductDetail() {
     );
   }
 
+  const addToWishlist = () => {
+    const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    if (!storedWishlist.includes(product.id)) {
+      storedWishlist.push(product.id);
+      localStorage.setItem("wishlist", JSON.stringify(storedWishlist));
+    }
+    navigate("/wishlist");
+  };
+
+  const addToCart = () => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const existing = storedCart.find((item) => item.id === product.id);
+
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      storedCart.push({...product, quantity: 1});
+    }
+
+    localStorage.setItem("cart", JSON.stringify(storedCart));
+    navigate("/cart");
+  };
   return (
     <div className="px-4 max-w-5xl mx-auto rounded-lg mt-20 py-3">
       <div className="flex flex-col sm:flex-row gap-8">
@@ -34,18 +60,15 @@ function ProductDetail() {
           <div className="mt-2">
             <h2 className="font-semibold text-lg">About Product</h2>
             <ul className="text-gray-700 text-sm mt-2 space-y-1">
-              
               <li>
                 <strong>Gender:</strong> {product.gender}
               </li>
               <li>
                 <strong>Category:</strong> {product.cname}
               </li>
-              
             </ul>
           </div>
 
-          {/* Price */}
           <div className="mt-4">
             <span className="text-2xl font-bold text-yellow-600">
               ₹{product.price}
@@ -55,12 +78,17 @@ function ProductDetail() {
             </span>
           </div>
 
-          {/* Buttons */}
           <div className="flex gap-4 mt-4">
-            <button className="px-6 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition">
+            <button
+              onClick={addToCart}
+              className="px-6 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition"
+            >
               Add to Bag
             </button>
-            <button className="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition">
+            <button
+              onClick={addToWishlist}
+              className="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition"
+            >
               Wishlist Item
             </button>
           </div>
