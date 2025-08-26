@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react";
 import {trendingProducts} from "../data/products";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const Wishlist = () => {
   const navigate = useNavigate();
+
   const [wishlist, setWishlist] = useState([]);
+
   useEffect(() => {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
     if (!isLoggedIn) {
