@@ -6,7 +6,7 @@ import linkedin from "../assets/linkedin.png";
 const Footer = () => {
   return (
     <footer className="bg-gray-50 text-black py-6 mt-10">
-      <div className="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div className="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left">
         <p className="text-sm sm:text-base">
           Eyesome made with 💜 by <span className="font-semibold">Pankaj</span>.
         </p>
