@@ -1,10 +1,10 @@
 import {useState} from "react";
 import {Link} from "react-router-dom";
 import ICon from "../assets/ICon.avif";
-import Search from "../assets/Search";
-import {Save} from "../assets/Save";
-import CartSVG from "../assets/CartSVG";
-import MenuSVG from "../assets/MenuSVG";
+import Search from "../assets/SVGs/Search";
+import {Save} from "../assets/SVGs/Save";
+import CartSVG from "../assets/SVGs/CartSVG";
+import MenuSVG from "../assets/SVGs/MenuSVG";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

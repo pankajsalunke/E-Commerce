@@ -1,18 +1,45 @@
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+import Addbtn from "../assets/addicon.png";
 
-function ProductCard({ product }) {
+function ProductCard({product}) {
   return (
-    <div className="border rounded-lg p-4 shadow hover:shadow-lg transition">
-      <img src={product.image} alt={product.title} className="h-40 w-full object-cover rounded" />
-      <h3 className="mt-2 font-semibold">{product.title}</h3>
-      <p className="text-gray-600">₹{product.price}</p>
-      <div className="mt-3 flex justify-between">
-        <Link to={`/product/${product.id}`} className="text-indigo-600 hover:underline">View</Link>
-        <button className="bg-indigo-600 text-white px-3 py-1 rounded hover:bg-indigo-700 transition">
-          Add to Cart
-        </button>
+    <Link
+      to={`/product/${product.id}`}
+      className="flex flex-col p-4 rounded-xl bg-gray-200 shadow-md hover:shadow-lg transition cursor-pointer gap-3"
+    >
+      {/* Top Row: Title + Price + Button */}
+      <div className="flex justify-between items-start w-full">
+        <h1 className="text-base sm:text-lg font-semibold text-gray-800">
+          {product.title}
+        </h1>
+
+        <div className="flex flex-col items-center gap-2">
+          <div className="flex gap-1">
+            <span className="text-base sm:text-lg font-bold text-gray-900">
+              ₹{product.price}
+            </span>
+            <button className="p-1 rounded-full bg-yellow-500 hover:bg-yellow-600 transition">
+              <img
+                src={Addbtn}
+                alt="add"
+                className="w-4 h-4"
+              />
+            </button>
+          </div>
+          <p className="text-gray-500 text-sm">{product.cname}</p>
+        </div>
       </div>
-    </div>
+
+      {/* Product Image */}
+      <div className="flex justify-center items-center w-full h-28 sm:h-32">
+        <img
+          src={product.image}
+          alt={product.title}
+          className="w-full h-full object-contain hover:scale-110 transition-transform duration-300 bg-transparent"
+        />
+      </div>
+    </Link>
   );
 }
+
 export default ProductCard;

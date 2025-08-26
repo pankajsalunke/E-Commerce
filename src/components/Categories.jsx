@@ -23,7 +23,7 @@ function Categories() {
 
   return (
     <section className="px-12 py-12">
-      <h1 className="text-3xl md:text-4xl  text-center mt-10 mb-4">
+      <h1 className="text-3xl md:text-4xl font-semibold break-words text-center mt-10 mb-4">
         Categories
       </h1>
       <div className="grid md:grid-cols-3 gap-4">
