@@ -22,7 +22,7 @@ function Navbar() {
             />
           </Link>
           <Link to="/">
-            <div className="font-monoton text-2xl sm:text-3xl hover:text-red-800 cursor-pointer transition">
+            <div className="text-2xl font-bold sm:text-3xl hover:text-red-800 cursor-pointer transition">
               EYESOME
             </div>
           </Link>
